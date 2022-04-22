@@ -114,8 +114,3 @@ $row = mysqli_fetch_array($result);
 </body>
 
 </html>
-<!-- 
-<?php
-include "header.php";
-include "connection.php";
-?> -->
