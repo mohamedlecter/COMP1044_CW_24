@@ -30,8 +30,8 @@ include "connection.php";
                     <div class="x_content">
                         <div class="x_content">
                             <form name="form1" action="" method="post">
-                                <input type="text" name="t1" class="form-control" placeholder="enter member name ">
-                                <input type="submit" name="submit1" value="search member" class="btn btn-default">
+                                <input type="text" name="t1" class="form-control" placeholder="ENTER MEMBER      ">
+                                <input type="submit" name="submit1" value="SEARCH MEMBER" class="btn btn-default">
                             </form>
                             <?php
                             if (isset($_POST["submit1"])) {

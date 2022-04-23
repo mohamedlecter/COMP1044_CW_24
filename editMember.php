@@ -3,7 +3,7 @@ include "header.php";
 
 include_once 'connection.php';
 if (count($_POST) > 0) {
-  mysqli_query($link, "UPDATE member set member_id='" . $_POST['id'] . "', firstname='" . $_POST['firstname'] . "', lastname='" . $_POST['lastname'] . " ' WHERE member_id='" . $_POST['id'] . "'");
+  mysqli_query($link, "UPDATE member set member_id='" . $_POST['id'] . "', gender='" . $_POST['gender'] . "', address='" . $_POST['address'] . "', contact='" . $_POST['contact'] . "', type='" . $_POST['type'] . "', year_level='" . $_POST['year_level'] . "', status='" . $_POST['status'] . "', firstname='" . $_POST['firstname'] . "', lastname='" . $_POST['lastname'] . " ' WHERE member_id='" . $_POST['id'] . "'");
   $message = "Record Modified Successfully";
 }
 $result = mysqli_query($link, "SELECT * FROM member WHERE member_id='" . $_GET['id'] . "'");
@@ -40,23 +40,74 @@ $row = mysqli_fetch_array($result);
                 <table class="table table-bordered">
                   <tr>
                     <td>
-                      <input type="hidden" name="id" class="form-control"" value=" <?php echo $row['member_id']; ?>">
+                      <h5>
+                        member id
+                      </h5>
                       <input type="text" name="id" value="<?php echo $row['member_id']; ?>">
-                      <!-- <input type="text" class="form-control" name="id" value="<?php echo $row['member_id']; ?>"> -->
                     </td>
                   </tr>
                   <tr>
                     <td>
+                      <h5>
+                        First Name
+                      </h5>
                       <input type="text" name="firstname" class="form-control" value="<?php echo $row['firstname']; ?>">
-
-                      <!-- <input type="text" class="form-control" name="firstname" class="txtField" value="<?php echo $row['firstname']; ?>"> -->
                     </td>
                   </tr>
                   <tr>
                     <td>
+                      <h5>
+                        Last Name
+                      </h5>
                       <input type="text" name="lastname" class="form-control" value="<?php echo $row['lastname']; ?>">
-
-                      <!-- <input type="text" class="form-control" name="firstname" class="txtField" value="<?php echo $row['firstname']; ?>"> -->
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>
+                        Gender
+                      </h5>
+                      <input type="text" name="gender" class="form-control" value="<?php echo $row['gender']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>
+                        Address
+                      </h5>
+                      <input type="text" name="address" class="form-control" value="<?php echo $row['address']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>
+                        Contact Number
+                      </h5>
+                      <input type="text" name="contact" class="form-control" value="<?php echo $row['contact']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>
+                        Type
+                      </h5>
+                      <input type="text" name="type" class="form-control" value="<?php echo $row['type']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>
+                        Year Level
+                      </h5>
+                      <input type="text" name="year_level" class="form-control" value="<?php echo $row['year_level']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>
+                        Status
+                      </h5>
+                      <input type="text" name="status" class="form-control" value="<?php echo $row['status']; ?>">
                     </td>
                   </tr>
                   <tr>
@@ -75,11 +126,6 @@ $row = mysqli_fetch_array($result);
   </div>
   <!-- /page content -->
 
-
-
-
-  <!-- ?> -->
-
   <!-- footer content -->
   <footer>
     <div class="pull-right">
@@ -92,30 +138,7 @@ $row = mysqli_fetch_array($result);
   <?php
   include "footer.php"
   ?>
-  <!-- <form name="frmUser" method="post" action="">
-    <div><?php if (isset($message)) {
-            echo $message;
-          } ?>
-    </div>
-    Username: <br>
-    <input type="hidden" name="id" class="txtField" value="<?php echo $row['book_id']; ?>">
-    <input type="text" name="id" value="<?php echo $row['book_id']; ?>">
-    <br>
-    Book title: <br>
-    <input type="text" name="book_title" class="txtField" value="<?php echo $row['book_title']; ?>">
-    <br>
-    Author:<br>
-    <input type="text" name="author" class="txtField" value="<?php echo $row['author']; ?>">
-    <br>
 
-    <input type="submit" name="submit" value="Submit" class="buttom">
-
-  </form> -->
 </body>
 
 </html>
-<!-- 
-<?php
-include "header.php";
-include "connection.php";
-?> -->

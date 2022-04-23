@@ -3,17 +3,19 @@ include "header.php";
 include_once 'connection.php';
 if (count($_POST) > 0) {
     $book_title = $_POST["book_title"];
+    $category_id = $_POST["category"];
+    $book_copies = $_POST["book_copies"];
     $author = $_POST["author"];
     $book_pub = $_POST["book_pub"];
     $copyright_year = $_POST["copyright_year"];
+    $date_added = $_POST["date_added"];
     $isbn = $_POST["isbn"];
-    $category_id = $_POST["category"];
+    $status = $_POST["status"];
     // mysqli_query($link, " INSERT INTO book (book_title, author,book_pub ,isbn , copyright_year) VALUES($book_title, $author, $book_pub, $isbn,  $copyright_year)");
-    mysqli_query($link, " INSERT INTO book (book_title, author, book_pub ,isbn , copyright_year, category_id ) VALUES('$book_title', '$author', '$book_pub', '$isbn',  '$copyright_year', '$category_id')");
+    mysqli_query($link, " INSERT INTO book (book_title, author, book_pub ,isbn , copyright_year, category_id, book_copies, date_added, status ) VALUES('$book_title', '$author', '$book_pub', '$isbn',  '$copyright_year', '$category_id', '$book_copies', '$date_added', '$status')");
     $message = "Record Modified Successfully";
 }
-// $result = mysqli_query($link, "SELECT * FROM member WHERE member_id='" . $_GET['id'] . "'");
-// $row = mysqli_fetch_array($result);
+
 ?>
 
 <div class="right_col" role="main">
@@ -43,37 +45,50 @@ if (count($_POST) > 0) {
                             <table class="table table-bordered">
                                 <tr>
                                     <td>
-                                        <input type="text" class="form-control" placeholder="books name" name="book_title" required="">
+                                        <input type="text" class="form-control" placeholder="Book name" name="book_title" required="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" class="form-control" placeholder="category_id" name="category" required="">
+                                        <input type="text" class="form-control" placeholder="Category id, e.g: 2" name="category" required="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" class="form-control" placeholder="books author name" name="author" required="">
+                                        <input type="text" class="form-control" placeholder="Book author name" name="author" required="">
 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" class="form-control" placeholder="books publication name" name="book_pub" required="">
+                                        <input type="text" class="form-control" placeholder="Number of copies to be added" name="book_copies" required="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Book publication name" name="book_pub" required="">
 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" class="form-control" placeholder="isbn" name="isbn" required="">
-
+                                        <input type="text" class="form-control" placeholder="ISBN e.g: 1-85435-628-3" name="isbn" required="">
                                     </td>
                                 </tr>
                                 <tr>
                                 <tr>
                                     <td>
-                                        <input type="text" class="form-control" placeholder="books purchase date" name="copyright_year" required="">
-
+                                        <input type="text" class="form-control" placeholder="Book publication date" name="copyright_year" required="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Book addedd date e.g: 2013-12-11 06:59:00" name="date_added" required="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Status e.g: new, old, damage or archive" name="status" required="">
                                     </td>
                                 </tr>
                                 <tr>

@@ -1,9 +1,8 @@
 <?php
 include "header.php";
-
 include_once 'connection.php';
 if (count($_POST) > 0) {
-  mysqli_query($link, "UPDATE book set book_id='" . $_POST['id'] . "', book_title='" . $_POST['book_title'] . "', author='" . $_POST['author'] . " ' WHERE book_id='" . $_POST['id'] . "'");
+  mysqli_query($link, "UPDATE book set book_id='" . $_POST['id'] . "', status='" . $_POST['status'] . "', isbn='" . $_POST['isbn'] . "', book_pub='" . $_POST['book_pub'] . "', copyright_year='" . $_POST['copyright_year'] . "', date_added='" . $_POST['date_added'] . "', book_copies='" . $_POST['book_copies'] . "', book_title='" . $_POST['book_title'] . "', author='" . $_POST['author'] . " ' WHERE book_id='" . $_POST['id'] . "'");
   $message = "Record Modified Successfully";
 }
 $result = mysqli_query($link, "SELECT * FROM book WHERE book_id='" . $_GET['id'] . "'");
@@ -40,31 +39,77 @@ $row = mysqli_fetch_array($result);
                 <table class="table table-bordered">
                   <tr>
                     <td>
-                      <input type="hidden" name="id" class="form-control"" value=" <?php echo $row['book_id']; ?>">
+                      <h5>
+                        Book id
+                      </h5>
                       <input type="text" name="id" value="<?php echo $row['book_id']; ?>">
-                      <!-- <input type="text" class="form-control" name="id" value="<?php echo $row['member_id']; ?>"> -->
                     </td>
                   </tr>
                   <tr>
                     <td>
+                      <h5>
+                        Book title
+                      </h5>
                       <input type="text" name="book_title" class="form-control" value="<?php echo $row['book_title']; ?>">
-
-                      <!-- <input type="text" class="form-control" name="firstname" class="txtField" value="<?php echo $row['firstname']; ?>"> -->
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input type="text" name="author" class="form-control" value="<?php echo $row['author']; ?>">
-
-                      <!-- <input type="text" class="form-control" name="firstname" class="txtField" value="<?php echo $row['firstname']; ?>"> -->
+                      <h5>
+                        Category id
+                      </h5>
+                      <input type="text" class="form-control" placeholder="Category id, e.g: 2" name="category" required="" value="<?php echo $row['category_id']; ?>">
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <input type="submit" name="submit1" class="btn btn-default submit" value="edit member" style="background-color: blue;color:white">
+                      <h5>
+                        Author
+                      </h5>
+                      <input type=" text" name="author" class="form-control" value="<?php echo $row['author']; ?>">
                     </td>
                   </tr>
-
+                  <tr>
+                    <td>
+                      <h5>Number of Book copies</h5>
+                      <input type="text" class="form-control" placeholder="Number of copies to be added" name="book_copies" required="" value=" <?php echo $row['book_copies']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>Publisher</h5>
+                      <input type="text" class="form-control" placeholder="Publisher" name="book_pub" required="" value=" <?php echo $row['book_pub']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>ISBN</h5>
+                      <input type="text" class="form-control" placeholder="ISBN" name="isbn" required="" value=" <?php echo $row['isbn']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>Copyright Year</h5>
+                      <input type="text" class="form-control" placeholder="Copyright Year" name="copyright_year" required="" value=" <?php echo $row['copyright_year']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>Added date</h5>
+                      <input type="text" class="form-control" placeholder="Added date" name="date_added" required="" value=" <?php echo $row['date_added']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>Status</h5>
+                      <input type="text" class="form-control" placeholder="Status" name="status" required="" value=" <?php echo $row['status']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="submit" name="submit1" class="btn btn-default submit" value="edit book" style="background-color: blue;color:white">
+                    </td>
+                  </tr>
                 </table>
               </form>
             </div>
@@ -92,25 +137,7 @@ $row = mysqli_fetch_array($result);
   <?php
   include "footer.php"
   ?>
-  <!-- <form name="frmUser" method="post" action="">
-    <div><?php if (isset($message)) {
-            echo $message;
-          } ?>
-    </div>
-    Username: <br>
-    <input type="hidden" name="id" class="txtField" value="<?php echo $row['book_id']; ?>">
-    <input type="text" name="id" value="<?php echo $row['book_id']; ?>">
-    <br>
-    Book title: <br>
-    <input type="text" name="book_title" class="txtField" value="<?php echo $row['book_title']; ?>">
-    <br>
-    Author:<br>
-    <input type="text" name="author" class="txtField" value="<?php echo $row['author']; ?>">
-    <br>
 
-    <input type="submit" name="submit" value="Submit" class="buttom">
-
-  </form> -->
 </body>
 
 </html>

@@ -45,12 +45,12 @@ if (count($_POST) > 0) {
                 </tr>
                 <tr>
                   <td>
-                    <input type="text" class="form-control" placeholder="borrow date" name="data_borrow" required="">
+                    <input type="text" class="form-control" placeholder="borrow date in datetime, e.g: 2014-03-20 23:50:00" name="data_borrow" required="">
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input type="text" class="form-control" placeholder="due date" name="due_date" required="">
+                    <input type="text" class="form-control" placeholder="due date, e.g: 2014-03-21" name="due_date" required="">
                   </td>
                 </tr>
                 <tr>

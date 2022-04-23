@@ -29,67 +29,13 @@ include "connection.php";
                     </div>
                     <div class="x_content">
                         <form name="form1" action="" method="post">
-                            <input type="text" name="t1" class="form-control" placeholder="enter books name ">
-                            <input type="submit" name="submit1" value="search book" class="btn btn-default">
+                            <input type="text" name="t1" class="form-control" placeholder="ENTER BOOK NAME">
+                            <input type="submit" name="submit1" value="SEARCH BOOK" class="btn btn-default">
                         </form>
 
                         <?php
                         if (isset($_POST["submit1"])) {
                             $res = mysqli_query($link, "select * from book where book_title like('$_POST[t1]%')");
-                            echo "<table class='table table-bordered'>";
-                            echo "<tr>";
-                            echo "<th>";
-                            echo "books title";
-                            echo "</th>";
-                            echo "<th>";
-                            echo "<th>";
-                            echo "author";
-                            echo "</th>";
-                            echo "<th>";
-                            echo "publisher name";
-                            echo "</th>";
-                            echo "<th>";
-                            echo "ISBN";
-                            echo "</th>";
-                            echo "<th>";
-                            echo "copyright year";
-                            echo "</th>";
-                            echo "<th>";
-                            echo "status";
-                            echo "</th>";
-                            echo "<th>";
-                            echo "action";
-                            echo "</th>";
-                            while ($row = mysqli_fetch_array($res)) {
-                                echo "<tr>";
-                                echo "<td>";
-                                echo $row["book_title"];
-                                echo "</td>";
-                                echo "<td>";
-                                echo "<td>";
-                                echo $row["author"];
-                                echo "</td>";
-                                echo "<td>";
-                                echo $row["book_pub"];
-                                echo "</td>";
-                                echo "<td>";
-                                echo $row["isbn"];
-                                echo "</td>";
-                                echo "<td>";
-                                echo $row["copyright_year"];
-                                echo "</td>";
-                                echo "<td>";
-                                echo $row["status"];
-                                echo "</td>";
-                                echo "<td>";
-                                echo '<a href="borrowBook.php?id=' . $row['book_id'] . '" class="borrowBtn" title="borrow book"><div class="borrow">Borrow</div></a>';
-                                echo '<a href="editBook.php?id=' . $row['book_id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip" style="margin: 2px 5px;"><span class="fa fa-pencil"></span></a>';
-                                echo '<a href="delBook.php?id=' . $row['book_id'] . '" title="Delete Record" data-toggle="tooltip" style="margin: 2px 5px;"><span class="fa fa-trash"></span></a>';
-                            }
-                            echo "</table>";
-                        } else {
-
-                            $res = mysqli_query($link, "select * from book");
                             echo "<table class='table table-bordered'>";
                             echo "<tr>";
                             echo "<th>";
@@ -99,6 +45,9 @@ include "connection.php";
                             echo "Author";
                             echo "</th>";
                             echo "<th>";
+                            echo "Number of copies";
+                            echo "</th>";
+                            echo "<th>";
                             echo "Publisher";
                             echo "</th>";
                             echo "<th>";
@@ -106,6 +55,9 @@ include "connection.php";
                             echo "</th>";
                             echo "<th>";
                             echo "Copyright Year";
+                            echo "</th>";
+                            echo "<th>";
+                            echo "Added date";
                             echo "</th>";
                             echo "<th>";
                             echo "Status";
@@ -121,6 +73,9 @@ include "connection.php";
                                 echo $row["author"];
                                 echo "</td>";
                                 echo "<td>";
+                                echo $row["book_copies"];
+                                echo "</td>";
+                                echo "<td>";
                                 echo $row["book_pub"];
                                 echo "</td>";
                                 echo "<td>";
@@ -128,6 +83,71 @@ include "connection.php";
                                 echo "</td>";
                                 echo "<td>";
                                 echo $row["copyright_year"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo $row["date_added"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo $row["status"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo '<a href="borrowBook.php?id=' . $row['book_id'] . '" class="borrowBtn" title="borrow book"><div class="borrow">Borrow</div></a>';
+                                echo '<a href="editBook.php?id=' . $row['book_id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip" style="margin: 2px 5px;"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="delBook.php?id=' . $row['book_id'] . '" title="Delete Record" data-toggle="tooltip" style="margin: 2px 5px;"><span class="fa fa-trash"></span></a>';
+                            }
+                            echo "</table>";
+                        } else {
+                            $res = mysqli_query($link, "select * from book");
+                            echo "<table class='table table-bordered'>";
+                            echo "<tr>";
+                            echo "<th>";
+                            echo "Book Title";
+                            echo "</th>";
+                            echo "<th>";
+                            echo "Author";
+                            echo "</th>";
+                            echo "<th>";
+                            echo "Number of copies";
+                            echo "</th>";
+                            echo "<th>";
+                            echo "Publisher";
+                            echo "</th>";
+                            echo "<th>";
+                            echo "ISBN";
+                            echo "</th>";
+                            echo "<th>";
+                            echo "Copyright Year";
+                            echo "</th>";
+                            echo "<th>";
+                            echo "Added date";
+                            echo "</th>";
+                            echo "<th>";
+                            echo "Status";
+                            echo "</th>";
+                            echo "<th>";
+                            echo "Action";
+                            while ($row = mysqli_fetch_array($res)) {
+                                echo "<tr>";
+                                echo "<td>";
+                                echo $row["book_title"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo $row["author"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo $row["book_copies"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo $row["book_pub"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo $row["isbn"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo $row["copyright_year"];
+                                echo "</td>";
+                                echo "<td>";
+                                echo $row["date_added"];
                                 echo "</td>";
                                 echo "<td>";
                                 echo $row["status"];
@@ -149,4 +169,17 @@ include "connection.php";
 <!-- /page content -->
 
 
+
+
 <!-- footer content -->
+<footer>
+    <div class="pull-right">
+        Library Management System
+    </div>
+    <div class="clearfix"></div>
+</footer>
+
+
+<?php
+include "footer.php"
+?>

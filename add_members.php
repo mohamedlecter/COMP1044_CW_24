@@ -42,13 +42,13 @@ include "connection.php";
                 </tr>
                 <tr>
                   <td>
-                    <input type="text" class="form-control" placeholder="gender" name="gender" required="">
+                    <input type="text" class="form-control" placeholder="Gender" name="gender" required="">
 
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input type="text" class="form-control" placeholder="address" name="address" required="">
+                    <input type="text" class="form-control" placeholder="Address" name="address" required="">
 
                   </td>
                 </tr>
@@ -60,14 +60,18 @@ include "connection.php";
                 </tr>
                 <tr>
                   <td>
-                    <input type="text" class="form-control" placeholder="type" name="type" required="">
+                    <input type="text" class="form-control" placeholder="Type" name="type" required="">
 
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input type="text" class="form-control" placeholder="year level" name="year_level" required="">
-
+                    <input type="text" class="form-control" placeholder="Year level" name="year_level" required="">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="text" name="status" class="form-control" placeholder="Status">
                   </td>
                 </tr>
                 <tr>
@@ -96,10 +100,11 @@ if (count($_POST) > 0) {
   $contact = $_POST['contact'];
   $type = $_POST['type'];
   $year_level = $_POST['year_level'];
+  $status = $_POST['status'];
   // $sql = "INSERT INTO member (firstname, lastname, gender, address, contact, type, year_level )
   //    VALUES ('$fname','$lname','$gender', '$address', '$contact', '$type', '$year_level')";
-  mysqli_query($link, "INSERT INTO member (firstname, lastname, gender, address, contact, type, year_level )
-    VALUES ('$fname','$lname','$gender', '$address', '$contact', '$type', '$year_level')");
+  mysqli_query($link, "INSERT INTO member (firstname, lastname, gender, address, contact, type, year_level, status )
+    VALUES ('$fname','$lname','$gender', '$address', '$contact', '$type', '$year_level', '$status')");
   $message = "Record Modified Successfully";
 }
 
