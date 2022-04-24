@@ -2,7 +2,7 @@
 include "header.php";
 include_once 'connection.php';
 if (count($_POST) > 0) {
-  mysqli_query($link, "UPDATE book set book_id='" . $_POST['id'] . "', status='" . $_POST['status'] . "', isbn='" . $_POST['isbn'] . "', book_pub='" . $_POST['book_pub'] . "', copyright_year='" . $_POST['copyright_year'] . "', date_added='" . $_POST['date_added'] . "', book_copies='" . $_POST['book_copies'] . "', book_title='" . $_POST['book_title'] . "', author='" . $_POST['author'] . " ' WHERE book_id='" . $_POST['id'] . "'");
+  mysqli_query($link, "UPDATE book set book_id='" . $_POST['id'] . "', publisher_name='" . $_POST['publisher_name'] . "', status='" . $_POST['status'] . "', isbn='" . $_POST['isbn'] . "', book_pub='" . $_POST['book_pub'] . "', copyright_year='" . $_POST['copyright_year'] . "', date_added='" . $_POST['date_added'] . "', book_copies='" . $_POST['book_copies'] . "', book_title='" . $_POST['book_title'] . "', author='" . $_POST['author'] . " ' WHERE book_id='" . $_POST['id'] . "'");
   $message = "Record Modified Successfully";
 }
 $result = mysqli_query($link, "SELECT * FROM book WHERE book_id='" . $_GET['id'] . "'");
@@ -77,8 +77,14 @@ $row = mysqli_fetch_array($result);
                   </tr>
                   <tr>
                     <td>
-                      <h5>Publisher</h5>
-                      <input type="text" class="form-control" placeholder="Publisher" name="book_pub" required="" value=" <?php echo $row['book_pub']; ?>">
+                      <h5>Book publication name</h5>
+                      <input type="text" class="form-control" placeholder="Book publication name" name="book_pub" required="" value=" <?php echo $row['book_pub']; ?>">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>Book publisher</h5>
+                      <input type="text" class="form-control" placeholder="Book publisher" name="publisher_name" required="" value=" <?php echo $row['publisher_name']; ?>">
                     </td>
                   </tr>
                   <tr>

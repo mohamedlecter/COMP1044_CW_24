@@ -11,8 +11,8 @@ if (count($_POST) > 0) {
     $date_added = $_POST["date_added"];
     $isbn = $_POST["isbn"];
     $status = $_POST["status"];
-    // mysqli_query($link, " INSERT INTO book (book_title, author,book_pub ,isbn , copyright_year) VALUES($book_title, $author, $book_pub, $isbn,  $copyright_year)");
-    mysqli_query($link, " INSERT INTO book (book_title, author, book_pub ,isbn , copyright_year, category_id, book_copies, date_added, status ) VALUES('$book_title', '$author', '$book_pub', '$isbn',  '$copyright_year', '$category_id', '$book_copies', '$date_added', '$status')");
+    $publisher_name = $_POST["publisher_name"];
+    mysqli_query($link, " INSERT INTO book (book_title, author, book_pub ,isbn , copyright_year, category_id, book_copies, date_added, status, publisher_name ) VALUES('$book_title', '$author', '$book_pub', '$isbn',  '$copyright_year', '$category_id', '$book_copies', '$date_added', '$status', '$publisher_name')");
     $message = "Record Modified Successfully";
 }
 
@@ -72,18 +72,24 @@ if (count($_POST) > 0) {
                                 </tr>
                                 <tr>
                                     <td>
+                                        <input type="text" class="form-control" placeholder="Book publisher" name="publisher_name" required="">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         <input type="text" class="form-control" placeholder="ISBN e.g: 1-85435-628-3" name="isbn" required="">
                                     </td>
                                 </tr>
                                 <tr>
                                 <tr>
                                     <td>
-                                        <input type="text" class="form-control" placeholder="Book publication date" name="copyright_year" required="">
+                                        <input type="text" class="form-control" placeholder="Copyright year" name="copyright_year" required="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" class="form-control" placeholder="Book addedd date e.g: 2013-12-11 06:59:00" name="date_added" required="">
+                                        <input type="text" class="form-control" placeholder="Book added date e.g: 2013-12-11 06:59:00" name="date_added" required="">
                                     </td>
                                 </tr>
                                 <tr>
